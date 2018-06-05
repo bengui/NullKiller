@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class NullKiller {
 
+    private static final String EMPTY_STRING = "";
+    private static final int ZERO_INT = 0;
+
     /**
      * Callback triggered by {@link NullKiller#ifNotNull(Object, NotNullCallback)} or {@link PossibleNotNull}
      * when the object validated is not null.
@@ -103,6 +106,39 @@ public class NullKiller {
         }
 
         return input;
+    }
+
+    /**
+     * Validates that the given {@link String} is not null and returns it.
+     * Returns empty string if the given value is null.
+     *
+     * @param string input string
+     * @return The given string or empty string.
+     */
+    public static String orEmptyString(String string) {
+        return or(string, EMPTY_STRING);
+    }
+
+    /**
+     * Validates that the given {@link Integer} is not null and returns the primitive representation.
+     * Returns 0 if the given value is null.
+     *
+     * @param integer
+     * @return The primitive representation of the given value or 0.
+     */
+    public static int orZero(Integer integer) {
+        return or(integer, ZERO_INT);
+    }
+
+    /**
+     * Validates that the given {@link Boolean} is not null and returns the primitive representation.
+     * Returns false if the given value is null.
+     *
+     * @param value
+     * @return The primitive representation of the given value or false.
+     */
+    public static boolean orFalse(Boolean value) {
+        return or(value, false);
     }
 
     /**

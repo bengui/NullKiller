@@ -86,4 +86,27 @@ public class NullKillerTest {
 
         assertTrue(isNotNullNorEmpty(strings));
     }
+
+    @Test
+    public void test_orEmptyString() {
+        assertEquals(orEmptyString(null), "");
+
+        assertEquals(orEmptyString("Hello"), "Hello");
+    }
+
+    @Test
+    public void test_orZero(){
+        assertEquals(orZero(null), 0);
+
+        Integer integer = 10;
+        assertEquals(orZero(integer),10);
+    }
+
+    @Test
+    public void test_orFalse(){
+        assertFalse(orFalse(null));
+
+        Boolean value = true;
+        assertTrue(orFalse(value));
+    }
 }
